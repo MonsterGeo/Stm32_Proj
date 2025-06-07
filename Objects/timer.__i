@@ -1,0 +1,4 @@
+--c99 --gnu -c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I .\start -I .\User -I .\library -I .\Delay -I .\Hardware
+-IE:\keil-pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include
+-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
+-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d "Hardware\Timer.C"

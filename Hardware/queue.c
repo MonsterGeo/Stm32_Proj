@@ -1,34 +1,38 @@
 #include "stm32f10x.h"
-#include <stdio.h>
 #include "queue.h"
+#include "Serial.h"
 
 
 
-void Q_Init(Q* q){
-	q->head = q->tail = 0;
+//=======================================================\
+
+Q q;
+// 链表初始化
+void RB_Init(){
+	q.head = 0;
+	q.tail = 0;
+	q.Length =0;
 }
-uint8_t isFull(Q *q){
-	return ((q->tail+1 ) % Buffer_Size == q->head);
-}
 
-uint8_t isEmpty(Q *q){
-	return (q->head == q->tail);
-}
 
-uint8_t Q_write(Q* q,uint16_t data ){
-	if(isFull(q)){
+//把串口数据写入环形队列
+uint8_t Write_RB(uint16_t data){
+	if(q.Length >= Size){
 		return 0;
 	}
-	q->buffer[q->head] = data;
-	q->head = (q->head+1) % Buffer_Size;
+	q.Ring_Buff[q.tail] = data;
+	q.tail = (q.tail+1) % Size;
+	q.Length++;
 	return 1;
 }
-
-uint8_t Q_Read(Q *q, uint8_t* data){
-	if(isEmpty(q)){
+//从环形队列中读数据
+uint16_t Read_RB(uint16_t *rData){
+	if(q.Length == 0){
+		*rData=0;
 		return 0;
 	}
-	*data = q->buffer[q->tail];
-	q->tail = (q->tail+1) % Buffer_Size;
+	*rData = q.Ring_Buff[q.head];
+	q.head = (q.head + 1) % Size;
+	q.Length--;
 	return 1;
 }

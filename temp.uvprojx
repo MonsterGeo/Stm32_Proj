@@ -708,12 +708,22 @@
             <File>
               <FileName>queue.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\queue.c</FilePath>
+              <FilePath>.\Hardware\queue.c</FilePath>
             </File>
             <File>
               <FileName>queue.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\queue.h</FilePath>
+              <FilePath>.\Hardware\queue.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.C</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Timer.C</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Timer.h</FilePath>
             </File>
           </Files>
         </Group>
